@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///C:/Users/Abu%20Mahdi/Pictures/belajar-arab.html -->
+<html lang="id" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belajar Profesi - الْعَامِلُونَ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', 'Amiri', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    text-align: center;
+    padding: 30px 20px 10px;
+    position: relative;
+  }
+
+  .header h1 {
+    font-family: 'Amiri', serif;
+    font-size: 3rem;
+    color: #f9d423;
+    text-shadow: 0 0 20px rgba(249,212,35,0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .header .subtitle {
+    font-size: 1.3rem;
+    color: #e0e0e0;
+    margin-top: 5px;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(249,212,35,0.3); }
+    to { text-shadow: 0 0 30px rgba(249,212,35,0.8), 0 0 60px rgba(249,212,35,0.3); }
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 12px 30px;
+    border: 2px solid #f9d423;
+    background: transparent;
+    color: #f9d423;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-btn:hover, .tab-btn.active {
+    background: #f9d423;
+    color: #1a1a2e;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(249,212,35,0.4);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== FLASHCARDS ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .flashcard {
+    perspective: 1000px;
+    height: 320px;
+    cursor: pointer;
+  }
+
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+
+  .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .flashcard-front {
+    background: linear-gradient(145deg, #1e3a5f, #2d5a8e);
+    border: 3px solid #4a9eff;
+    box-shadow: 0 10px 30px rgba(74,158,255,0.3);
+  }
+
+  .flashcard-back {
+    background: linear-gradient(145deg, #5f1e3a, #8e2d5a);
+    border: 3px solid #ff4a8e;
+    box-shadow: 0 10px 30px rgba(255,74,142,0.3);
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-front .emoji { font-size: 4rem; margin-bottom: 15px; }
+  .flashcard-front .arabic {
+    font-family: 'Amiri', serif;
+    font-size: 2.2rem;
+    color: #f9d423;
+    margin-bottom: 8px;
+  }
+  .flashcard-front .indonesian {
+    font-size: 1.1rem;
+    color: #b0c4de;
+  }
+  .flashcard-front .gender-tag {
+    margin-top: 10px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .gender-tag.male { background: #2196F3; color: #fff; }
+  .gender-tag.female { background: #E91E63; color: #fff; }
+
+  .flashcard-back .arabic {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: #f9d423;
+    margin-bottom: 10px;
+  }
+  .flashcard-back .pair-label {
+    font-size: 0.9rem;
+    color: #ffb6c1;
+    margin-bottom: 5px;
+  }
+  .flashcard-back .indonesian {
+    font-size: 1rem;
+    color: #ddd;
+  }
+
+  .flashcard:hover .flashcard-inner {
+    transform: rotateY(10deg);
+  }
+  .flashcard.flipped:hover .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* ===== QUIZ SECTION ===== */
+  .quiz-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .quiz-card {
+    background: linear-gradient(145deg, #1a1a3e, #2a2a5e);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    border: 2px solid #4a4a8e;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  }
+
+  .quiz-question {
+    font-family: 'Amiri', serif;
+    font-size: 3rem;
+    color: #f9d423;
+    margin-bottom: 10px;
+  }
+
+  .quiz-hint {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 30px;
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .quiz-option {
+    padding: 18px;
+    border: 2px solid #555;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Amiri', serif;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quiz-option:hover {
+    border-color: #f9d423;
+    background: rgba(249,212,35,0.1);
+    transform: scale(1.03);
+  }
+
+  .quiz-option.correct {
+    border-color: #4CAF50;
+    background: rgba(76,175,80,0.3);
+    animation: correctPulse 0.5s ease;
+  }
+
+  .quiz-option.wrong {
+    border-color: #f44336;
+    background: rgba(244,67,54,0.3);
+    animation: shake 0.5s ease;
+  }
+
+  @keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+
+  .quiz-score {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #f9d423;
+  }
+
+  .next-btn {
+    margin-top: 20px;
+    padding: 12px 40px;
+    background: #f9d423;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+  }
+
+  .next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(249,212,35,0.5);
+  }
+
+  /* ===== MATCHING GAME ===== */
+  .match-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .match-instruction {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 25px;
+  }
+
+  .match-columns {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .match-column {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .match-column h3 {
+    text-align: center;
+    font-family: 'Amiri', serif;
+    font-size: 1.5rem;
+    color: #f9d423;
+    margin-bottom: 10px;
+  }
+
+  .match-item {
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid #555;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    user-select: none;
+  }
+
+  .match-item:hover {
+    border-color: #f9d423;
+    background: rgba(249,212,35,0.1);
+  }
+
+  .match-item.selected {
+    border-color: #4a9eff;
+    background: rgba(74,158,255,0.2);
+    box-shadow: 0 0 15px rgba(74,158,255,0.3);
+  }
+
+  .match-item.matched {
+    border-color: #4CAF50;
+    background: rgba(76,175,80,0.2);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .match-item.wrong-match {
+    animation: shake 0.4s ease;
+    border-color: #f44336;
+    background: rgba(244,67,54,0.2);
+  }
+
+  .match-score {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #f9d423;
+  }
+
+  .reset-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 40px;
+    background: #E91E63;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .reset-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(233,30,99,0.4);
+  }
+
+  /* ===== FLOATING PARTICLES ===== */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(249,212,35,0.3);
+    border-radius: 50%;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .header h1 { font-size: 2rem; }
+    .cards-grid { padding: 15px; gap: 15px; }
+    .flashcard { height: 280px; }
+    .quiz-options { grid-template-columns: 1fr; }
+    .quiz-question { font-size: 2.2rem; }
+    .match-columns { gap: 15px; }
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar-container {
+    max-width: 500px;
+    margin: 0 auto 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f9d423, #ff6b6b);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* ===== CONFETTI ===== */
+  .confetti-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: confettiFall linear forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles Background -->
+<div class="particles" id="particles"><div class="particle" style="left: 71.7782%; animation-duration: 11.6329s; animation-delay: 1.33008s; height: 5.73882px; width: 5.73882px;"></div><div class="particle" style="left: 19.4398%; animation-duration: 16.1285s; animation-delay: 1.40156s; height: 8.89994px; width: 8.89994px;"></div><div class="particle" style="left: 9.71982%; animation-duration: 12.8099s; animation-delay: 9.9367s; height: 8.5158px; width: 8.5158px;"></div><div class="particle" style="left: 83.7869%; animation-duration: 14.7641s; animation-delay: 0.429254s; height: 8.8186px; width: 8.8186px;"></div><div class="particle" style="left: 96.1547%; animation-duration: 17.6507s; animation-delay: 2.27055s; height: 5.5267px; width: 5.5267px;"></div><div class="particle" style="left: 70.9764%; animation-duration: 14.0072s; animation-delay: 9.13686s; height: 4.75311px; width: 4.75311px;"></div><div class="particle" style="left: 6.45792%; animation-duration: 12.6459s; animation-delay: 6.30894s; height: 7.65655px; width: 7.65655px;"></div><div class="particle" style="left: 35.4102%; animation-duration: 15.5279s; animation-delay: 5.58056s; height: 6.99722px; width: 6.99722px;"></div><div class="particle" style="left: 21.4281%; animation-duration: 11.2809s; animation-delay: 8.42962s; height: 4.8692px; width: 4.8692px;"></div><div class="particle" style="left: 21.3954%; animation-duration: 13.0855s; animation-delay: 9.72351s; height: 7.98239px; width: 7.98239px;"></div><div class="particle" style="left: 68.5143%; animation-duration: 11.9673s; animation-delay: 3.43778s; height: 8.51763px; width: 8.51763px;"></div><div class="particle" style="left: 60.6587%; animation-duration: 8.03582s; animation-delay: 8.16136s; height: 7.09518px; width: 7.09518px;"></div><div class="particle" style="left: 37.8978%; animation-duration: 17.8494s; animation-delay: 4.50267s; height: 6.52007px; width: 6.52007px;"></div><div class="particle" style="left: 73.0458%; animation-duration: 13.4225s; animation-delay: 2.00573s; height: 4.37515px; width: 4.37515px;"></div><div class="particle" style="left: 13.0959%; animation-duration: 10.7571s; animation-delay: 8.97276s; height: 6.99404px; width: 6.99404px;"></div><div class="particle" style="left: 87.4482%; animation-duration: 11.0171s; animation-delay: 2.25932s; height: 4.23469px; width: 4.23469px;"></div><div class="particle" style="left: 55.7227%; animation-duration: 16.0311s; animation-delay: 6.89162s; height: 7.41673px; width: 7.41673px;"></div><div class="particle" style="left: 51.8476%; animation-duration: 14.5535s; animation-delay: 7.5677s; height: 6.17583px; width: 6.17583px;"></div><div class="particle" style="left: 48.6031%; animation-duration: 11.1308s; animation-delay: 0.805968s; height: 3.23747px; width: 3.23747px;"></div><div class="particle" style="left: 9.89965%; animation-duration: 17.7309s; animation-delay: 7.98612s; height: 8.45896px; width: 8.45896px;"></div><div class="particle" style="left: 78.6869%; animation-duration: 8.99118s; animation-delay: 4.56895s; height: 4.18899px; width: 4.18899px;"></div><div class="particle" style="left: 3.4307%; animation-duration: 12.9386s; animation-delay: 7.00413s; height: 6.16766px; width: 6.16766px;"></div><div class="particle" style="left: 59.7507%; animation-duration: 17.6255s; animation-delay: 4.8735s; height: 3.72358px; width: 3.72358px;"></div><div class="particle" style="left: 95.7239%; animation-duration: 9.05476s; animation-delay: 1.80341s; height: 8.06773px; width: 8.06773px;"></div><div class="particle" style="left: 40.6807%; animation-duration: 16.1101s; animation-delay: 1.4497s; height: 3.61555px; width: 3.61555px;"></div><div class="particle" style="left: 92.3255%; animation-duration: 15.1464s; animation-delay: 6.80563s; height: 8.9467px; width: 8.9467px;"></div><div class="particle" style="left: 75.954%; animation-duration: 15.9011s; animation-delay: 9.64504s; height: 7.69163px; width: 7.69163px;"></div><div class="particle" style="left: 92.1729%; animation-duration: 12.2516s; animation-delay: 2.20654s; height: 8.25807px; width: 8.25807px;"></div><div class="particle" style="left: 92.2438%; animation-duration: 10.3734s; animation-delay: 9.98129s; height: 7.03445px; width: 7.03445px;"></div><div class="particle" style="left: 86.7463%; animation-duration: 14.4551s; animation-delay: 4.72295s; height: 7.21307px; width: 7.21307px;"></div></div>
+
+<!-- Confetti -->
+<div class="confetti-container" id="confetti"></div>
+
+<!-- Header -->
+<div class="header">
+  <h1>الْعَامِلُونَ</h1>
+  <div class="subtitle">📚 Belajar Profesi dalam Bahasa Arab 📚</div>
+</div>
+
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <button class="tab-btn" onclick="showTab('flashcards')">🃏 Kartu Flash</button>
+  <button class="tab-btn active" onclick="showTab('quiz')">❓ Kuis</button>
+  <button class="tab-btn" onclick="showTab('matching')">🔗 Cocokkan</button>
+</div>
+
+<!-- ===== TAB 1: FLASHCARDS ===== -->
+<div class="tab-content" id="tab-flashcards">
+  <div class="cards-grid" id="cardsGrid"><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">🏪</div>
+          <div class="arabic">تَاجِر</div>
+          <div class="indonesian">Pedagang</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">تَاجِرَة</div>
+          <div class="indonesian">Pedagang (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">🏪</div>
+          <div class="arabic">تَاجِرَة</div>
+          <div class="indonesian">Pedagang</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">تَاجِر</div>
+          <div class="indonesian">Pedagang (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">📖</div>
+          <div class="arabic">تِلْمِيذ</div>
+          <div class="indonesian">Murid</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">تِلْمِيذَة</div>
+          <div class="indonesian">Murid (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">📖</div>
+          <div class="arabic">تِلْمِيذَة</div>
+          <div class="indonesian">Murid</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">تِلْمِيذ</div>
+          <div class="indonesian">Murid (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">💼</div>
+          <div class="arabic">مُوظَّف</div>
+          <div class="indonesian">Karyawan</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">مُوظَّفَة</div>
+          <div class="indonesian">Karyawan (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">💼</div>
+          <div class="arabic">مُوظَّفَة</div>
+          <div class="indonesian">Karyawan</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">مُوظَّف</div>
+          <div class="indonesian">Karyawan (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">👨‍🏫</div>
+          <div class="arabic">مُدَرِّس</div>
+          <div class="indonesian">Guru</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">مُدَرِّسَة</div>
+          <div class="indonesian">Guru (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">👨‍🏫</div>
+          <div class="arabic">مُدَرِّسَة</div>
+          <div class="indonesian">Guru</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">مُدَرِّس</div>
+          <div class="indonesian">Guru (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">🧹</div>
+          <div class="arabic">خَادِم</div>
+          <div class="indonesian">Pembantu</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">خَادِمَة</div>
+          <div class="indonesian">Pembantu (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">🧹</div>
+          <div class="arabic">خَادِمَة</div>
+          <div class="indonesian">Pembantu</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">خَادِم</div>
+          <div class="indonesian">Pembantu (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">👔</div>
+          <div class="arabic">مُدِير</div>
+          <div class="indonesian">Direktur</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">مُدِيرَة</div>
+          <div class="indonesian">Direktur (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">👔</div>
+          <div class="arabic">مُدِيرَة</div>
+          <div class="indonesian">Direktur</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">مُدِير</div>
+          <div class="indonesian">Direktur (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">👷</div>
+          <div class="arabic">مُهَنْدِس</div>
+          <div class="indonesian">Insinyur</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">مُهَنْدِسَة</div>
+          <div class="indonesian">Insinyur (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">👷</div>
+          <div class="arabic">مُهَنْدِسَة</div>
+          <div class="indonesian">Insinyur</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">مُهَنْدِس</div>
+          <div class="indonesian">Insinyur (laki-laki)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">🩺</div>
+          <div class="arabic">طَبِيب</div>
+          <div class="indonesian">Dokter</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">طَبِيبَة</div>
+          <div class="indonesian">Dokter (perempuan)</div>
+        </div>
+      </div>
+    </div><div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">🩺</div>
+          <div class="arabic">طَبِيبَة</div>
+          <div class="indonesian">Dokter</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">طَبِيب</div>
+          <div class="indonesian">Dokter (laki-laki)</div>
+        </div>
+      </div>
+    </div></div>
+</div>
+
+<!-- ===== TAB 2: QUIZ ===== -->
+<div class="tab-content active" id="tab-quiz">
+  <div class="quiz-container">
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="quizProgress" style="width: 0%;"></div>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-question" id="quizQuestion">تَاجِر</div>
+      <div class="quiz-hint" id="quizHint">Apa arti kata ini? (لِلْمُذَكَّر)</div>
+      <div class="quiz-options" id="quizOptions"><button class="quiz-option">Direktur (Perempuan)</button><button class="quiz-option">Guru (Perempuan)</button><button class="quiz-option">Dokter (Perempuan)</button><button class="quiz-option">Pedagang (Laki-laki)</button><button class="quiz-option">Karyawan (Perempuan)</button><button class="quiz-option">Insinyur (Perempuan)</button><button class="quiz-option">Pembantu (Perempuan)</button><button class="quiz-option">Murid (Perempuan)</button></div>
+      <div class="quiz-score" id="quizScore">Skor: 0 / 0</div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">Soal Berikutnya ➡️</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: MATCHING ===== -->
+<div class="tab-content" id="tab-matching">
+  <div class="match-container">
+    <div class="match-instruction">👆 Klik kata di kolom kiri, lalu klik pasangannya di kolom kanan</div>
+    <div class="match-columns">
+      <div class="match-column">
+        <h3>لِلْمُذَكَّر (Laki-laki)</h3>
+        <div id="matchLeft"><div class="match-item matched" data-word="مُدَرِّس" data-side="left">مُدَرِّس</div><div class="match-item" data-word="مُوظَّف" data-side="left">مُوظَّف</div><div class="match-item" data-word="مُدِير" data-side="left">مُدِير</div><div class="match-item" data-word="مُهَنْدِس" data-side="left">مُهَنْدِس</div><div class="match-item" data-word="طَبِيب" data-side="left">طَبِيب</div><div class="match-item" data-word="تِلْمِيذ" data-side="left">تِلْمِيذ</div><div class="match-item" data-word="تَاجِر" data-side="left">تَاجِر</div><div class="match-item" data-word="خَادِم" data-side="left">خَادِم</div></div>
+      </div>
+      <div class="match-column">
+        <h3>لِلْمُؤَنَّث (Perempuan)</h3>
+        <div id="matchRight"><div class="match-item matched" data-word="مُدَرِّسَة" data-side="right">مُدَرِّسَة</div><div class="match-item" data-word="طَبِيبَة" data-side="right">طَبِيبَة</div><div class="match-item" data-word="مُدِيرَة" data-side="right">مُدِيرَة</div><div class="match-item" data-word="مُهَنْدِسَة" data-side="right">مُهَنْدِسَة</div><div class="match-item" data-word="خَادِمَة" data-side="right">خَادِمَة</div><div class="match-item" data-word="تِلْمِيذَة" data-side="right">تِلْمِيذَة</div><div class="match-item" data-word="تَاجِرَة" data-side="right">تَاجِرَة</div><div class="match-item" data-word="مُوظَّفَة" data-side="right">مُوظَّفَة</div></div>
+      </div>
+    </div>
+    <div class="match-score" id="matchScore">Pasangan: 1 / 8</div>
+    <button class="reset-btn" onclick="initMatching()">🔄 Mulai Ulang</button>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const professions = [
+  { male: 'تَاجِر', female: 'تَاجِرَة', meaning: 'Pedagang', emoji: '🏪' },
+  { male: 'تِلْمِيذ', female: 'تِلْمِيذَة', meaning: 'Murid', emoji: '📖' },
+  { male: 'مُوظَّف', female: 'مُوظَّفَة', meaning: 'Karyawan', emoji: '💼' },
+  { male: 'مُدَرِّس', female: 'مُدَرِّسَة', meaning: 'Guru', emoji: '👨‍🏫' },
+  { male: 'خَادِم', female: 'خَادِمَة', meaning: 'Pembantu', emoji: '🧹' },
+  { male: 'مُدِير', female: 'مُدِيرَة', meaning: 'Direktur', emoji: '👔' },
+  { male: 'مُهَنْدِس', female: 'مُهَنْدِسَة', meaning: 'Insinyur', emoji: '👷' },
+  { male: 'طَبِيب', female: 'طَبِيبَة', meaning: 'Dokter', emoji: '🩺' }
+];
+
+// ===== PARTICLES =====
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (Math.random() * 10 + 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.width = p.style.height = (Math.random() * 6 + 3) + 'px';
+    container.appendChild(p);
+  }
+}
+createParticles();
+
+// ===== TAB SWITCHING =====
+function showTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+
+  if (tab === 'quiz') initQuiz();
+  if (tab === 'matching') initMatching();
+}
+
+// ===== FLASHCARDS =====
+function buildFlashcards() {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = '';
+
+  professions.forEach((p, i) => {
+    // Male card
+    const cardM = document.createElement('div');
+    cardM.className = 'flashcard';
+    cardM.onclick = () => cardM.classList.toggle('flipped');
+    cardM.innerHTML = `
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="emoji">${p.emoji}</div>
+          <div class="arabic">${p.male}</div>
+          <div class="indonesian">${p.meaning}</div>
+          <div class="gender-tag male">لِلْمُذَكَّر (Laki-laki)</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="pair-label">Pasangan Perempuan:</div>
+          <div class="arabic">${p.female}</div>
+          <div class="indonesian">${p.meaning} (perempuan)</div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(cardM);
+
+    // Female card
+    const cardF = document.createElement('div');
+    cardF.className = 'flashcard';
+    cardF.onclick = () => cardF.classList.toggle('flipped');
+    cardF.innerHTML = `
+      <div class="flashcard-inner">
+        <div class="flashcard-front" style="background: linear-gradient(145deg, #5f1e3a, #8e2d5a); border-color: #ff4a8e; box-shadow: 0 10px 30px rgba(255,74,142,0.3);">
+          <div class="emoji">${p.emoji}</div>
+          <div class="arabic">${p.female}</div>
+          <div class="indonesian">${p.meaning}</div>
+          <div class="gender-tag female">لِلْمُؤَنَّث (Perempuan)</div>
+        </div>
+        <div class="flashcard-back" style="background: linear-gradient(145deg, #1e3a5f, #2d5a8e); border-color: #4a9eff; box-shadow: 0 10px 30px rgba(74,158,255,0.3);">
+          <div class="pair-label">Pasangan Laki-laki:</div>
+          <div class="arabic">${p.male}</div>
+          <div class="indonesian">${p.meaning} (laki-laki)</div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(cardF);
+  });
+}
+buildFlashcards();
+
+// ===== QUIZ =====
+let quizIndex = 0, quizCorrect = 0, quizTotal = 0, quizQuestions = [];
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function generateQuizQuestions() {
+  const questions = [];
+  professions.forEach(p => {
+    // Ask male form
+    questions.push({
+      question: p.male,
+      hint: `Apa arti kata ini? (لِلْمُذَكَّر)`,
+      correct: p.meaning + ' (Laki-laki)',
+      options: shuffleArray(professions.map(x => x.meaning + (x === p ? ' (Laki-laki)' : ' (Perempuan)')))
+    });
+    // Ask female form
+    questions.push({
+      question: p.female,
+      hint: `Apa arti kata ini? (لِلْمُؤَنَّث)`,
+      correct: p.meaning + ' (Perempuan)',
+      options: shuffleArray(professions.map(x => x.meaning + (x === p ? ' (Perempuan)' : ' (Laki-laki)')))
+    });
+  });
+  return shuffleArray(questions);
+}
+
+function initQuiz() {
+  quizQuestions = generateQuizQuestions();
+  quizIndex = 0;
+  quizCorrect = 0;
+  quizTotal = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  if (quizIndex >= quizQuestions.length) {
+    document.getElementById('quizQuestion').textContent = '🎉 Selesai!';
+    document.getElementById('quizHint').textContent = `Skor akhir: ${quizCorrect} dari ${quizTotal}`;
+    document.getElementById('quizOptions').innerHTML = '';
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('quizProgress').style.width = '100%';
+    if (quizCorrect >= 12) showConfetti();
+    return;
+  }
+
+  const q = quizQuestions[quizIndex];
+  document.getElementById('quizQuestion').textContent = q.question;
+  document.getElementById('quizHint').textContent = q.hint;
+  document.getElementById('quizScore').textContent = `Skor: ${quizCorrect} / ${quizTotal}`;
+  document.getElementById('quizProgress').style.width = ((quizIndex / quizQuestions.length) * 100) + '%';
+  document.getElementById('nextBtn').style.display = 'none';
+
+  const optsDiv = document.getElementById('quizOptions');
+  optsDiv.innerHTML = '';
+
+  // Make sure correct answer is in options
+  if (!q.options.includes(q.correct)) {
+    q.options[Math.floor(Math.random() * q.options.length)] = q.correct;
+  }
+
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option';
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(btn, opt, q.correct);
+    optsDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(btn, selected, correct) {
+  const allBtns = document.querySelectorAll('.quiz-option');
+  allBtns.forEach(b => b.style.pointerEvents = 'none');
+  quizTotal++;
+
+  if (selected === correct) {
+    btn.classList.add('correct');
+    quizCorrect++;
+  } else {
+    btn.classList.add('wrong');
+    allBtns.forEach(b => {
+      if (b.textContent === correct) b.classList.add('correct');
+    });
+  }
+
+  document.getElementById('quizScore').textContent = `Skor: ${quizCorrect} / ${quizTotal}`;
+  document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+function nextQuestion() {
+  quizIndex++;
+  showQuestion();
+}
+
+// ===== MATCHING GAME =====
+let matchSelected = null, matchCount = 0;
+
+function initMatching() {
+  matchSelected = null;
+  matchCount = 0;
+  document.getElementById('matchScore').textContent = 'Pasangan: 0 / 8';
+
+  const leftDiv = document.getElementById('matchLeft');
+  const rightDiv = document.getElementById('matchRight');
+  leftDiv.innerHTML = '';
+  rightDiv.innerHTML = '';
+
+  const shuffledLeft = shuffleArray(professions);
+  const shuffledRight = shuffleArray(professions);
+
+  shuffledLeft.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'match-item';
+    item.textContent = p.male;
+    item.dataset.word = p.male;
+    item.dataset.side = 'left';
+    item.onclick = () => selectMatch(item);
+    leftDiv.appendChild(item);
+  });
+
+  shuffledRight.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'match-item';
+    item.textContent = p.female;
+    item.dataset.word = p.female;
+    item.dataset.side = 'right';
+    item.onclick = () => selectMatch(item);
+    rightDiv.appendChild(item);
+  });
+}
+
+function selectMatch(item) {
+  if (item.classList.contains('matched')) return;
+
+  if (!matchSelected) {
+    matchSelected = item;
+    item.classList.add('selected');
+  } else {
+    if (matchSelected === item) {
+      item.classList.remove('selected');
+      matchSelected = null;
+      return;
+    }
+
+    if (matchSelected.dataset.side === item.dataset.side) {
+      matchSelected.classList.remove('selected');
+      matchSelected = item;
+      item.classList.add('selected');
+      return;
+    }
+
+    // Check if they match
+    const left = matchSelected.dataset.side === 'left' ? matchSelected : item;
+    const right = matchSelected.dataset.side === 'right' ? matchSelected : item;
+
+    const prof = professions.find(p => p.male === left.dataset.word);
+
+    if (prof && prof.female === right.dataset.word) {
+      left.classList.remove('selected');
+      right.classList.remove('selected');
+      left.classList.add('matched');
+      right.classList.add('matched');
+      matchCount++;
+      document.getElementById('matchScore').textContent = `Pasangan: ${matchCount} / 8`;
+
+      if (matchCount === 8) {
+        setTimeout(() => {
+          document.getElementById('matchScore').textContent = '🎉 Sempurna! Semua pasangan benar!';
+          showConfetti();
+        }, 500);
+      }
+    } else {
+      left.classList.add('wrong-match');
+      right.classList.add('wrong-match');
+      setTimeout(() => {
+        left.classList.remove('wrong-match', 'selected');
+        right.classList.remove('wrong-match', 'selected');
+      }, 600);
+    }
+
+    matchSelected = null;
+  }
+}
+
+// ===== CONFETTI =====
+function showConfetti() {
+  const container = document.getElementById('confetti');
+  container.style.display = 'block';
+  container.innerHTML = '';
+
+  const colors = ['#f9d423', '#ff6b6b', '#4CAF50', '#2196F3', '#E91E63', '#9C27B0'];
+
+  for (let i = 0; i < 80; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    piece.style.animationDelay = (Math.random() * 1) + 's';
+    piece.style.width = (Math.random() * 10 + 5) + 'px';
+    piece.style.height = (Math.random() * 10 + 5) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    container.appendChild(piece);
+  }
+
+  setTimeout(() => { container.style.display = 'none'; }, 4000);
+}
+</script>
+
+
+
+</body></html>
